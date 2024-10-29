@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h2>Your Profile</h2>
+        <div class="nav-links">
+            <a href="index.html" class="home-link">Home</a>
+            <a href="products.html" class="products-link">Products</a>
+            <a href="profile.html" class="profile-link">Profile</a>
+        </div>
+    </header>
+    
+    <div class="profile-container">
+       
+        <div id="addresses" style="display: none;">
+            <h4>Saved Addresses:</h4>
+            <ul id="addressList"></ul>
+        </div>
+
+        <h3>Edit Profile</h3>
+        <form id="editProfileForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" disabled>
+            <br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" placeholder="Enter your address" required>
+            <br>
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" placeholder="Enter your mobile number" required>
+            <br>
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Show/Hide Addresses
+        document.getElementById('showAddressesButton').addEventListener('click', function() {
+            const addressesDiv = document.getElementById('addresses');
+            if (addressesDiv.style.display === 'none') {
+                addressesDiv.style.display = 'block';
+                this.textContent = 'Hide Available Addresses'; // Change button text
+            } else {
+                addressesDiv.style.display = 'none';
+                this.textContent = 'Available Addresses'; // Revert button text
+            }
+        });
+
+        // Load user profile information on page load
+        window.onload = function() {
+            displayProfile(); // Load profile information
+            displayAddresses();
+            displayProfile(); // Load addresses
+        };
+    </script>
+</body>
+</html>
